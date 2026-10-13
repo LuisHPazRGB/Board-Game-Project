@@ -1,7 +1,7 @@
-package Jogo;
+package jogo;
 
-import Excecoes.MovimentoInvalido;
-import Excecoes.PosicaoInvalida;
+import excecoes.MovimentoInvalido;
+import excecoes.PosicaoInvalida;
 import modelo.Casa;
 import modelo.Jogador;
 import modelo.Peca;

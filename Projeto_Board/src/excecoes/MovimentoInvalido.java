@@ -1,4 +1,4 @@
-package Excecoes;
+package excecoes;
 
 // Exceção customizada para jogadas inválidas (ex: posição já ocupada)
 public class MovimentoInvalido extends Exception
