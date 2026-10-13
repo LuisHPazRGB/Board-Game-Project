@@ -2,10 +2,10 @@ package jogo;
 
 import excecoes.MovimentoInvalido;
 import excecoes.PosicaoInvalida;
-import modelo.Casa;
-import modelo.Jogador;
-import modelo.Peca;
-import modelo.Tabuleiro;
+import Modelo.Casa;
+import Modelo.Jogador;
+import Modelo.Peca;
+import Modelo.Tabuleiro;
 
 import java.util.Scanner;
 

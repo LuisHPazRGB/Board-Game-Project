@@ -1,3 +1,5 @@
+package main;
+
 import jogo.JogoDaVelha;
 
 import java.util.Scanner;
