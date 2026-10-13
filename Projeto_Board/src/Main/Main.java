@@ -1,6 +1,6 @@
-package main;
+package Main;
 
-import jogo.JogoDaVelha;
+import Jogo.JogoDaVelha;
 
 import java.util.Scanner;
 

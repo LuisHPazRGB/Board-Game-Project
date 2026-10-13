@@ -1,11 +1,11 @@
-package jogo;
+package Jogo;
 
-import excecoes.MovimentoInvalido;
-import excecoes.PosicaoInvalida;
-import Modelo.Casa;
-import Modelo.Jogador;
-import Modelo.Peca;
-import Modelo.Tabuleiro;
+import Excecoes.MovimentoInvalido;
+import Excecoes.PosicaoInvalida;
+import modelo.Casa;
+import modelo.Jogador;
+import modelo.Peca;
+import modelo.Tabuleiro;
 
 import java.util.Scanner;
 

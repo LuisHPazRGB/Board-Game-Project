@@ -1,6 +1,6 @@
-package Modelo;
+package modelo;
 
-import excecoes.PosicaoInvalida;
+import Excecoes.PosicaoInvalida;
 
 public class Tabuleiro
 {
