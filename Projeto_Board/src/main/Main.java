@@ -4,10 +4,8 @@ import jogo.JogoDaVelha;
 
 import java.util.Scanner;
 
-public class Main
-{
-    public static void main(String[] args)
-    {
+public class Main {
+    public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
 
         System.out.print("Nome do Jogador 1 (X): ");
@@ -19,13 +17,12 @@ public class Main
         if (nome2.isEmpty()) nome2 = "Jogador 2";
 
         JogoDaVelha jogo = new JogoDaVelha(nome1, nome2);
-        jogo.iniciar();
-    }
-    do
-        {
+        jogo.iniciar();//Chama a função de iniciar o jogo
+
+        do {
             jogo.iniciar();
         } while (jogo.jogarNovamente());
- 
+
         System.out.println("Obrigado por jogar!");
     }
 }

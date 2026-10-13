@@ -29,6 +29,7 @@ public class JogoDaVelha
         scanner = new Scanner(System.in);
     }
 
+    //Loop inicial para dar inicio ao jogo
     public void iniciar()
     {
         System.out.println("=== JOGO DA VELHA ===");
@@ -64,16 +65,20 @@ public class JogoDaVelha
         if (vencedor != null)
         {
             System.out.println("\nParabens, " + vencedor.getNome() + "! Voce venceu!");
+            vitorias[indiceAtual]++;//Soma a vitória de cada jogador
         }
         else
         {
             System.out.println("\nDeu velha! Empate.");
+            empates++;//soma a quantidade de empates
         }
         mostrarPlacar();
     }
 
+    //Analisa a posição da jogada
     private int[] lerPosicao() throws PosicaoInvalida
     {
+        //Previne quebra do sistema caso o usuario digite letras ao inves de números
         try
         {
             System.out.print("Linha (0-2): ");
@@ -84,9 +89,10 @@ public class JogoDaVelha
         }
         catch (NumberFormatException e)
         {
-            throw new PosicaoInvalida("Digite apenas numeros inteiros.");
+            throw new PosicaoInvalida("Digite apenas numeros inteiros.");//Retorna como erro de posição invalida
         }
     }
+
 
     private void jogar(Jogador jogador, int linha, int coluna) throws PosicaoInvalida, MovimentoInvalido
     {
@@ -98,6 +104,7 @@ public class JogoDaVelha
         casa.setPeca(jogador.getPeca());
     }
 
+    //Verifica se as posições das peças do jogador atendem as condições de vitoria ou não
     private boolean verificarVitoria(char s) throws PosicaoInvalida
     {
         for (int i = 0; i < 3; i++)
@@ -114,6 +121,8 @@ public class JogoDaVelha
         Casa c = tabuleiro.getCasa(linha, coluna);
         return !c.estaVazia() && c.getPeca().getSimbolo() == s;
     }
+
+    //Mostra o placar de cada jogador e de empates
     private void mostrarPlacar()
     {
     
@@ -122,11 +131,13 @@ System.out.println("\n--- PLACAR ---");
         System.out.println(jogadores[1].getNome() + " (O): " + vitorias[1]);
         System.out.println("Empates: " + empates);
     }
+
+    //Atua como um reset do estado do jogo reiniciando a partida
     public boolean jogarNovamente()
     {
         System.out.print("\nJogar novamente? (S/N): ");
         String resposta = scanner.nextLine().trim().toLowerCase();
-        if (resposta.equals("S"))
+        if (resposta.equals("s"))
         {
             tabuleiro.inicializar(); //Limpa o tabuleiro
             indiceAtual = 0;         //X volta a começar
