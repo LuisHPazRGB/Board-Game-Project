@@ -17,10 +17,10 @@ public class Main {
         if (nome2.isEmpty()) nome2 = "Jogador 2";
 
         JogoDaVelha jogo = new JogoDaVelha(nome1, nome2);
-        jogo.iniciar();//Chama a função de iniciar o jogo
 
+        //Loop para iniciar o jogo e reiniciar caso necessario
         do {
-            jogo.iniciar();
+            jogo.iniciar();//Chama a função de iniciar o jogo
         } while (jogo.jogarNovamente());
 
         System.out.println("Obrigado por jogar!");
