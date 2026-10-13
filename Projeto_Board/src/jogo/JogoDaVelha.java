@@ -15,6 +15,8 @@ public class JogoDaVelha
     private Jogador[] jogadores;
     private int indiceAtual; //0 ou 1: de quem é a vez
     private Scanner scanner;
+    private int[] vitorias = new int[2];
+    private int empates = 0;
 
     public JogoDaVelha(String nome1, String nome2)
     {
@@ -67,6 +69,7 @@ public class JogoDaVelha
         {
             System.out.println("\nDeu velha! Empate.");
         }
+        mostrarPlacar();
     }
 
     private int[] lerPosicao() throws PosicaoInvalida
@@ -110,5 +113,25 @@ public class JogoDaVelha
     {
         Casa c = tabuleiro.getCasa(linha, coluna);
         return !c.estaVazia() && c.getPeca().getSimbolo() == s;
+    }
+    private void mostrarPlacar()
+    {
+    
+System.out.println("\n--- PLACAR ---");
+        System.out.println(jogadores[0].getNome() + " (X): " + vitorias[0]);
+        System.out.println(jogadores[1].getNome() + " (O): " + vitorias[1]);
+        System.out.println("Empates: " + empates);
+    }
+    public boolean jogarNovamente()
+    {
+        System.out.print("\nJogar novamente? (S/N): ");
+        String resposta = scanner.nextLine().trim().toLowerCase();
+        if (resposta.equals("S"))
+        {
+            tabuleiro.inicializar(); //Limpa o tabuleiro
+            indiceAtual = 0;         //X volta a começar
+            return true;
+        }
+        return false;
     }
 }
