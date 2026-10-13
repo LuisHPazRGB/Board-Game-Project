@@ -1,53 +1,56 @@
 package modelo;
 
+import excecoes.PosicaoInvalida;
+
 public class Tabuleiro
 {
     private Casa[][] grid; //Matriz bidimensional representando o tabuleiro
     private int linhas = 3; //Número de linhas
-    private in colunas = 3; //Número de colunas
+    private int colunas = 3; //Número de colunas
 
-    //Construtor , inicializa o tabuleiro criando as casas
+    //Construtor, inicializa o tabuleiro criando as casas
     public Tabuleiro()
     {
         grid = new Casa[linhas][colunas];
         inicializar();
     }
-    //Metodo auxiliar para instanciar todas as posições todas as posições da matriz com as células vazias
+
+    //Instancia todas as posições da matriz com casas vazias
     public void inicializar()
     {
-        for (int i = 0 ; i < linhas ; i++)
+        for (int i = 0; i < linhas; i++)
         {
-            for(int j = 0 ; i < colunas ; i++)
+            for (int j = 0; j < colunas; j++)
             {
                 grid[i][j] = new Casa();
             }
         }
     }
 
-    //Válida se as coordenas informadas estão dentro da matriz
-    public boolean estaDentroDosLimites(int linha, int coluna) {
+    //Valida se as coordenadas informadas estão dentro da matriz
+    public boolean estaDentroDosLimites(int linha, int coluna)
+    {
         return linha >= 0 && linha < linhas && coluna >= 0 && coluna < colunas;
     }
 
-    //Retorna uma célula específica garantindo a validação dos limites
-    public Casa getCasa(int linha , int coluna)
+    //Retorna uma casa específica garantindo a validação dos limites
+    public Casa getCasa(int linha, int coluna) throws PosicaoInvalida
     {
-        if estaDentroDosLimites(linha , coluna)
-    {
-        throw new excecoes.PosicaoInvalida("A posicao eh invalida");
-    }
-
-        return grid[linhas][colunas];
+        if (!estaDentroDosLimites(linha, coluna))
+        {
+            throw new PosicaoInvalida("A posicao eh invalida.");
+        }
+        return grid[linha][coluna];
     }
 
     //Verifica se o tabuleiro está cheio
     public boolean estaCheio()
     {
-        for (int i = 0 ; i < linhas ; i++)
+        for (int i = 0; i < linhas; i++)
         {
-            for(int j = 0 ; i < colunas ; i++)
+            for (int j = 0; j < colunas; j++)
             {
-                if (grid[i][j].estaVazia());
+                if (grid[i][j].estaVazia())
                 {
                     return false;
                 }
@@ -56,25 +59,21 @@ public class Tabuleiro
         return true;
     }
 
-    //Forma o tabuleiro
+    //Desenha o tabuleiro no console
     public void formarTabuleiro()
     {
         System.out.println("\n    0   1   2");
-        for (int i = 0; i < linhas ; i++)
+        for (int i = 0; i < linhas; i++)
         {
             System.out.println("  +---+---+---+");
-            System.out.println();
-            System.out.println(i + " ");
-            for (int j = 0 ; j < colunas ; j++)
+            System.out.print(i + " ");
+            for (int j = 0; j < colunas; j++)
             {
-                char simbolo = grid[i][j].estaVazia() ? ' ' : grid[i][j].getPeca().getsimbolo();
-                System.out.println("| " + simbolo + " ");
+                char simbolo = grid[i][j].estaVazia() ? ' ' : grid[i][j].getPeca().getSimbolo();
+                System.out.print("| " + simbolo + " ");
             }
             System.out.println("|");
         }
         System.out.println("  +---+---+---+");
     }
-
-
-
 }
