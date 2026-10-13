@@ -21,4 +21,11 @@ public class Main
         JogoDaVelha jogo = new JogoDaVelha(nome1, nome2);
         jogo.iniciar();
     }
+    do
+        {
+            jogo.iniciar();
+        } while (jogo.jogarNovamente());
+ 
+        System.out.println("Obrigado por jogar!");
+    }
 }
