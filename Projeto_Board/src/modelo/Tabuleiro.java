@@ -5,12 +5,14 @@ import excecoes.PosicaoInvalida;
 public class Tabuleiro
 {
     private Casa[][] grid; //Matriz bidimensional representando o tabuleiro
-    private int linhas = 3; //Número de linhas
-    private int colunas = 3; //Número de colunas
+    private int linhas; //Número de linhas
+    private int colunas; //Número de colunas
 
     //Construtor, inicializa o tabuleiro criando as casas
     public Tabuleiro()
     {
+        this.linhas = linhas;
+        this.colunas = colunas;
         grid = new Casa[linhas][colunas];
         inicializar();
     }
@@ -25,6 +27,16 @@ public class Tabuleiro
                 grid[i][j] = new Casa();
             }
         }
+    }
+
+    public void getLinhas()
+    {
+        return linhas;
+    }
+
+    public void getColunas()
+    {
+        return colunas;
     }
 
     //Valida se as coordenadas informadas estão dentro da matriz
@@ -57,23 +69,5 @@ public class Tabuleiro
             }
         }
         return true;
-    }
-
-    //Desenha o tabuleiro no console
-    public void formarTabuleiro()
-    {
-        System.out.println("\n    0   1   2");
-        for (int i = 0; i < linhas; i++)
-        {
-            System.out.println("  +---+---+---+");
-            System.out.print(i + " ");
-            for (int j = 0; j < colunas; j++)
-            {
-                char simbolo = grid[i][j].estaVazia() ? ' ' : grid[i][j].getPeca().getSimbolo();
-                System.out.print("| " + simbolo + " ");
-            }
-            System.out.println("|");
-        }
-        System.out.println("  +---+---+---+");
     }
 }
