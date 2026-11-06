@@ -24,11 +24,12 @@ public class RegraPosicaoVazia implements RegraDeMovimento
             Casa casaOrigem = tabuleiro.getCasa(linhaOrigem, colunaOrigem);
             if (casaOrigem.estaVazia() || casaOrigem.getPeca().getSimbolo() != jogador.getPeca().getSimbolo())
             {
-                throw new MovimentoInvalido("Não podes mover uma peça que não é tua ou de uma casa vazia.");
+                throw new MovimentoInvalido("Jogada invalida na origem");
             }
-            casaOrigem.setPeca(null); // Esvazia a origem
+            // Remove a peça da origem (o contador diminui temporariamente)
+            tabuleiro.removerPeca(linhaOrigem, colunaOrigem);
         }
-
-        casaDestino.setPeca(jogador.getPeca()); // Coloca no destino
+        // Coloca no destino (o contador aumenta novamente, ficando equilibrado num movimento normal)
+        tabuleiro.colocarPeca(linhaDestino, colunaDestino, jogador.getPeca());
     }
 }

@@ -7,6 +7,7 @@ public class Tabuleiro
     private Casa[][] grid; //Matriz bidimensional representando o tabuleiro
     private int linhas; //Número de linhas
     private int colunas; //Número de colunas
+    private int pecasNoTabuleiro;
 
     //Construtor, inicializa o tabuleiro criando as casas
     public Tabuleiro()
@@ -14,6 +15,7 @@ public class Tabuleiro
         this.linhas = linhas;
         this.colunas = colunas;
         grid = new Casa[linhas][colunas];
+        this.pecasNoTabuleiro = 0;
         inicializar();
     }
 
@@ -55,19 +57,31 @@ public class Tabuleiro
         return grid[linha][coluna];
     }
 
+    //O Tabuleiro controla a entrada de peças e atualiza o contador
+    public void colocarPeca(int linha, int coluna, Peca peca) throws PosicaoInvalida
+    {
+        Casa casa = getCasa(linha, coluna);
+        if (casa.estaVazia())
+        {
+            pecasNoTabuleiro++; // Aumenta o contador
+        }
+        casa.setPeca(peca);
+    }
+
+    //O Tabuleiro controla a remoção (captura) e atualiza o contador
+    public void removerPeca(int linha, int coluna) throws PosicaoInvalida
+    {
+        Casa casa = getCasa(linha, coluna);
+        if (!casa.estaVazia())
+        {
+            pecasNoTabuleiro--; // Diminui o contador
+        }
+        casa.setPeca(null);
+    }
+
     //Verifica se o tabuleiro está cheio
     public boolean estaCheio()
     {
-        for (int i = 0; i < linhas; i++)
-        {
-            for (int j = 0; j < colunas; j++)
-            {
-                if (grid[i][j].estaVazia())
-                {
-                    return false;
-                }
-            }
-        }
-        return true;
+        return pecasNoTabuleiro == (linhas * colunas);
     }
 }
