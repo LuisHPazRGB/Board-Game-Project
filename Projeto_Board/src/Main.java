@@ -1,11 +1,33 @@
-import jogo.JogoDaVelha;
+import javafx.application.Application;
+import ui.AppTerminal;
+import gui.AppGrafica;
+import Engine.GameEngine;
+import Engine.GameLoader;
+import java.util.Scanner;
 
-import engine.GameEngine;
-import engine.GameLoader;
+public class Main
+{
+    public static void main(String[] args)
+    {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Como deseja jogar?\n1 - Terminal\n2 - Interface Gráfica");
+        int escolha = scanner.nextInt();
 
-public class Main {
-    public static void main(String[] args) {
-        System.out.println("Board Game Engine - Backend Inicializado.");
-        System.out.println("A interface gráfica em JavaFX deverá instanciar o GameLoader para carregar o ficheiro JSON e iniciar o jogo.");
+        if (escolha == 1)
+        {
+            try
+            {
+                GameEngine engine = GameLoader.carregarJogo("jogos/jogo_da_velha.json");
+                AppTerminal.jogar(engine);
+            }
+            catch (Exception e)
+            {
+                System.out.println("Erro: " + e.getMessage());
+            }
+        }
+        else
+        {
+            Application.launch(AppGrafica.class, args);
+        }
     }
 }

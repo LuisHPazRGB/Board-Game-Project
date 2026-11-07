@@ -1,4 +1,4 @@
-package Engine;
+package engine;
 
 import excecoes.MovimentoInvalido;
 import excecoes.PosicaoInvalida;

@@ -1,4 +1,4 @@
-package Engine;
+package engine;
 
 import excecoes.ConfiguracaoInvalida;
 import modelo.Jogador;
@@ -56,7 +56,21 @@ public class GameLoader
             List<Jogador> jogadores = new ArrayList<>();
             for (int i = 0; i < playerCount; i++)
             {
-                jogadores.add(new Jogador(nomesSorteio.get(i), new Peca(symbols.getString(i).charAt(0))));
+                String nome = nomesSorteio.get(i);
+                char simbolo = symbols.getString(i).charAt(0);
+
+                // 1. Cria o jogador primeiro (se o seu construtor de Jogador exigir a peça logo de cara,
+                // você pode precisar adicionar um metodo setPeca() na classe Jogador)
+                Jogador novoJogador = new Jogador(nome);
+
+                // 2. Cria a peça passando o jogador como dono.
+                // Como não tem "tipo" no JSON da Velha/Trilha, usamos "COMUM" como padrão.
+                Peca novaPeca = new Peca(simbolo, novoJogador, "COMUM");
+
+                // 3. Associa a peça ao jogador
+                novoJogador.setPeca(novaPeca);
+
+                jogadores.add(novoJogador);
             }
 
             // 3. Configurar Regras de Movimento
