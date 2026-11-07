@@ -1,0 +1,18 @@
+{
+  "game": "Jogo da Velha",
+  "board": {
+    "rows": 3,
+    "columns": 3
+  },
+  "players": {
+    "count": 2,
+    "symbols": ["X", "O"]
+  },
+  "rules": {
+    "placement": "EMPTY_POSITION",
+    "winCondition": {
+      "type": "ALIGNMENT",
+      "quantity": 3
+    }
+  }
+}

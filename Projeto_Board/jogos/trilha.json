@@ -1,0 +1,19 @@
+{
+  "game": "Trilha",
+  "board": {
+    "rows": 7,
+    "columns": 7
+  },
+  "players": {
+    "count": 2,
+    "symbols": ["B", "P"]
+  },
+  "rules": {
+    "placement": "EMPTY_POSITION",
+    "captureRule": "MILL_CAPTURE",
+    "winCondition": {
+      "type": "ELIMINATION",
+      "minPieces": 2
+    }
+  }
+}
