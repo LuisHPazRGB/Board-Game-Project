@@ -1,8 +1,8 @@
 import javafx.application.Application;
 import ui.AppTerminal;
 import gui.AppGrafica;
-import Engine.GameEngine;
-import Engine.GameLoader;
+import engine.GameEngine;
+import engine.GameLoader;
 import java.util.Scanner;
 
 public class Main
