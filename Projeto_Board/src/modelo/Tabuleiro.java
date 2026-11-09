@@ -10,7 +10,7 @@ public class Tabuleiro
     private int pecasNoTabuleiro;
 
     //Construtor, inicializa o tabuleiro criando as casas
-    public Tabuleiro()
+    public Tabuleiro(int linhas , int colunas)
     {
         this.linhas = linhas;
         this.colunas = colunas;
@@ -31,12 +31,12 @@ public class Tabuleiro
         }
     }
 
-    public void getLinhas()
+    public int getLinhas()
     {
         return linhas;
     }
 
-    public void getColunas()
+    public int getColunas()
     {
         return colunas;
     }

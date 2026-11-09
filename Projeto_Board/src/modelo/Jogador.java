@@ -1,11 +1,16 @@
 package modelo;
 
-public class Jogador
+public class    Jogador
 {
     private String nome; //Nome atribuido ao jogador
     private Peca peca; //Peça atribuida ao jogador
 
-    public Jogador(String nome ,Peca peca)
+    public Jogador(String nome)
+    {
+        this.nome = nome;
+    }
+
+    public Jogador(String nome, Peca peca)
     {
         this.nome = nome;
         this.peca = peca;
@@ -19,5 +24,9 @@ public class Jogador
     public Peca getPeca()
     {
         return peca;
+    }
+    public void setPeca(Peca peca)
+    {
+        this.peca = peca;
     }
 }

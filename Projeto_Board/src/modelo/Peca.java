@@ -7,7 +7,7 @@ public class Peca
     private String tipo;
 
     //Construtor
-    public Peca(char simbolo)
+    public Peca(char simbolo, Jogador dono, String tipo)
     {
         this.simbolo = simbolo;
         this.dono = dono;
